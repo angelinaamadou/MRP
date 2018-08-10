@@ -9,7 +9,6 @@ using JLD
 
 
 set_default_plot_size(16cm, 14cm)
-
 ############# Time and Space complexity  #############################
 Time_data =DataFrame(steps = [1000, 10000, 100000,1000000], 
                     time=[204.648279506,906.670216452,10087.945737867,98422.233072766],
@@ -17,7 +16,6 @@ Time_data =DataFrame(steps = [1000, 10000, 100000,1000000],
 t1 = plot(Time_data, x=:steps,y=:time, Guide.ylabel("Time (seconds)"), Geom.point, Geom.line, Scale.x_log10)
 t2 = plot(Time_data, x=:steps,y=:space,Guide.ylabel("Space (MB)"), Geom.point, Geom.line, Scale.x_log10)
 draw(PNG("./plots/Complexity.png", 7inch, 5inch), hstack(t1,t2))
-
 
 ################## Simulation Data ##############################
 sim_stats = load("./simulated_data/sim_stats100000.jld")["data"]
