@@ -9,18 +9,13 @@ using JLD
 using StatsBase
 
 
-
 set_default_plot_size(16cm, 14cm)
 
 nodes_edges = load("nodes_edges.jld")["nodes"]
 nodes_pop =  load("nodes_pop.jld")["nodes"]
 
-
-
-
 md = loadMapData("map.osm");
 r = :none
-
 
 
 ## Get network from map
@@ -34,7 +29,6 @@ intersections = findClassIntersections(highways, roads)
 ## classes 1-6 represent roads used for typical routing (levels 7 and 8 are service and pedestrian roads, such as parking, lot entrances and driveways)
 
 network = createGraph(segmentHighways(nodes, highways,  intersections, roads,Set(1:6)),intersections)
-
 
 ######################### Simulation ############################
 mutable struct TravelPath
