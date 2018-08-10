@@ -44,10 +44,7 @@ ECYBASLF_std = std(demos[:ECYBASLF])
 ## Create new column for DA numbers
 sort!(demos,:PRCDDA)
 demos[:DA] = [x for x in 1:nrow(demos)]
-demos
-
 stack_demos = stack(demos, [:ECYBASPOP,:ECYBASHPOP, :ECYBASLF], :PRCDDA)
-stack_demos
 
 ## filter  dataframe to drop main outliers
 stack_demos = stack_demos[(stack_demos[:value] .<= 5000),:] 
@@ -70,7 +67,6 @@ demos[:DA] = [string("DA$x") for x in demos[:DA]]
 demos[:PRCDDA] = [string(x) for x in demos[:PRCDDA]]
 
 demos_centroids = join(demos, cn_df, on = :PRCDDA)
-
 save("nodes_pop.jld", "nodes", demos_centroids)
 
 
