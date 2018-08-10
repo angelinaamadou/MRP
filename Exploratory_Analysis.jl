@@ -8,14 +8,11 @@ using HDF5
 using JLD
 
 
-### The  Exploratory Analysis was performed using Julia DataFrame.
-
+### Exploratory Analysis using Julia DataFrame.
 set_default_plot_size(14cm, 10cm)
-
 ## Get Data from OpenstreetMap and centroids from shapefile
 nodes = load("data.jld")["data"]
 centroids = load("centers.jld")["centers"]
-
 
 ## Map each centroid to an OpenstreetMap node
 centroid_nodes = Dict([centroids[k]=>nodes[k] for k in keys(nodes)])
